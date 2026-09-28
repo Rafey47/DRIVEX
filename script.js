@@ -80,9 +80,22 @@ scene.add(road);
         scene.add(leftEdge);
         const rightEdge = new THREE.Mesh(edgeGeo, edgeMat );
 
-rightEdge.rotation.x = -MathPI / 2;
+rightEdge.rotation.x = -Math.PI / 2;
          rightEdge.position.set(6, 0.02, 0);
          scene.add(rightEdge);
+
+  // Lane Making
+    
+  
+
+      const laneMarkGeo = new THREE.PlaneGeometry(0.12, 3);
+
+      const laneMarkMat = new THREE.MeshStandardMaterial({color: 0xffffff});
+      for (let z = -100; z < 100; z+= 6) { const mark = new THREE.Mesh(laneMarkGeo,laneMarkMat);
+         mark.rotation.x = -Math.PI / 2;
+         mark.position.set(0, 0.025, z);
+         scene.add(mark); }
+
 window.addEventListener("resize", () => {
 
 
