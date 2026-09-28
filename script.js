@@ -13,9 +13,9 @@ scene.background = new THREE.Color(0x10141a);
 
 
 const cam = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-cam.position.set(0, 5, 10);
+cam.position.set(0, 4.5, 10);
 
-cam.lookAt(0, 0, 0);
+cam.lookAt(0, 0, -20);
 
 const ctx = new THREE.WebGLRenderer({ antialias: true });
 
@@ -48,6 +48,41 @@ floor.rotation.x = -Math.PI / 2;
 
 scene.add(floor);
 
+ //Road
+     
+
+ const roadGeo = new THREE.PlaneGeometry(12, 200);
+const roadMat = new THREE.MeshStandardMaterial({color: 0x181a1d});
+     
+
+       const road = new THREE.Mesh(roadGeo, roadMat);
+       road.rotation.x = -Math.PI / 2;
+          
+
+              road.position.y = 0.01;
+
+scene.add(road);
+
+
+
+        //ROAD EDGE LINES
+
+              const edgeGeo = new THREE.PlaneGeometry(0.15, 200);
+ const edgeMat = new THREE.MeshStandardMaterial({color: 0xffffff});
+             
+          const leftEdge = new THREE.Mesh(edgeGeo,edgeMat);
+          leftEdge.rotation.x = -Math.PI / 2;
+   
+          
+  leftEdge.position.set(-6, 0.02, 0);
+    
+  
+        scene.add(leftEdge);
+        const rightEdge = new THREE.Mesh(edgeGeo, edgeMat );
+
+rightEdge.rotation.x = -MathPI / 2;
+         rightEdge.position.set(6, 0.02, 0);
+         scene.add(rightEdge);
 window.addEventListener("resize", () => {
 
 
